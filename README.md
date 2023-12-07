@@ -47,3 +47,25 @@ curl http://localhost:5000/temperature?city=London&units=metric
   "temperature": 20.5,
   "units": "metric"
 }
+```
+
+## Testing the API with the provided script
+
+### Running the Test Script
+
+To test your Weather API endpoint with the provided script, use the following command:
+
+```bash
+python test_script.py --endpoint http://your-api-endpoint/temperature # This will default to localhost if you don't specify, so only add if necessary
+```
+
+### Example Output
+```
+City           Metric    Imperial
+New York       20.30     68.50
+Los Angeles    24.00     75.20
+Houston        26.70     80.10
+London         14.90     58.90
+Hong Kong      25.60     78.10
+```
+

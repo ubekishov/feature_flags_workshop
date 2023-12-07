@@ -46,4 +46,5 @@ curl http://localhost:5000/temperature?city=London&units=metric
   "city": "London",
   "temperature": 20.5,
   "units": "metric"
-}```
+}
+```

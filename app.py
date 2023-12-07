@@ -25,6 +25,7 @@ def get_temperature():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
 def fetch_temperature(city_name, units="imperial"):
     base_url = 'http://api.openweathermap.org/data/2.5/weather'
     params = {'q': city_name, 'units': units, 'appid': OPENWEATHER_API_KEY}
@@ -39,6 +40,7 @@ def fetch_temperature(city_name, units="imperial"):
         error_message = data.get('message', 'Unknown error')
         raise Exception(f'Failed to fetch temperature: {error_message}')
 
+
 def get_temperature_from_local(city_name, units="imperial"):
     # Load city data from the JSON file
     with open("temperatures.json", "r") as file:
@@ -52,6 +54,7 @@ def get_temperature_from_local(city_name, units="imperial"):
             return city["temperature"][units]
 
     raise ValueError(f"City '{formatted_city}' not found in the list")
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

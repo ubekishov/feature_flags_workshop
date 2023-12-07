@@ -1,6 +1,7 @@
 import requests
 import argparse
 
+
 def query_temperature(endpoint, city, units):
     response = requests.get(endpoint, params={'city': city, 'units': units})
     data = response.json()
@@ -10,9 +11,14 @@ def query_temperature(endpoint, city, units):
     else:
         return f"Error: {data.get('error', 'Unknown error')}", units
 
+
 def main():
     parser = argparse.ArgumentParser(description="Query temperature endpoint for cities in metric and imperial units.")
-    parser.add_argument('--endpoint', default='http://localhost:5000/temperature', help='Endpoint URL for temperature query')
+    parser.add_argument(
+        '--endpoint',
+        default='http://localhost:5000/temperature',
+        help='Endpoint URL for temperature query'
+    )
     args = parser.parse_args()
 
     cities = ["New York", "Los Angeles", "Houston", "London", "Hong Kong"]

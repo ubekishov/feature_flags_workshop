@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import requests
 import os
 import json
+import time
+import random
 
 app = Flask(__name__)
 
@@ -48,7 +50,10 @@ def get_temperature_from_local(city_name, units="imperial"):
 
     # Capitalize the first letter of each word in the city name
     formatted_city = ' '.join(word.capitalize() for word in city_name.split())
-    
+
+    delay = random.uniform(0.1, 0.6)
+    time.sleep(delay)
+
     for city in cities_data["cities"]:
         if city["name"] == formatted_city:
             return city["temperature"][units]

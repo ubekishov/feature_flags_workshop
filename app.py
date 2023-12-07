@@ -40,7 +40,7 @@ def fetch_temperature(city_name, units="imperial"):
 
 def get_temperature_from_local(city_name, units="imperial"):
     # Load city data from the JSON file
-    with open("cities_data.json", "r") as file:
+    with open("temperatures.json", "r") as file:
         cities_data = json.load(file)
 
     # Capitalize the first letter of each word in the city name

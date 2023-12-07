@@ -69,3 +69,43 @@ London         14.90     58.90
 Hong Kong      25.60     78.10
 ```
 
+## Implementing Caching Behind a Feature Flag
+
+### Harness Setup
+
+#### Create SDK Key
+
+* In Harness Feature flags, under `PROJECT SETUP` open the environments page
+* Click `+New Environment`
+  * Give your environment the name `development`
+  * Keep `Non-production` checked
+* Under the `development` environment page, click `+New SDK Key`
+  * Give name `development`
+  * Keep `Server` checked
+  * Copy the value of your SDK key and store it in a secret manager, or somewhere safe
+
+#### Create Feature Flag
+* In Harness Feature flags, open the Feature Flags page
+* Click `+New Feature Flag`
+  * Select `Boolean`
+  * Give your flag the name `cache_result`
+  * Click `Next`
+  * Modify the value of `If the flag is Enabled, serve` to `True`
+    * Read this carefully, not setting this correctly will cause issues
+  * Click `Save and Close`
+
+### Run Application
+
+Follow all steps as before (including rebuilding the app), but make a small modification to add the Harness SDK key as 
+an environment variable when running the application.
+
+#### Parameter
+```
+-e FF_KEY=<your_ff_key>
+```
+#### Example
+```
+docker run -p 5000:5000 -e FF_KEY=<your_ff_key> -e OPENWEATHER_API_KEY=<your_openweather_api_key> weather-api
+```
+
+

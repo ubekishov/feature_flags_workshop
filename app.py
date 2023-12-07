@@ -7,6 +7,9 @@ import random
 
 app = Flask(__name__)
 
+# Cache to store temperature values
+temperature_cache = {}
+
 OPENWEATHER_API_KEY = os.environ.get('OPENWEATHER_API_KEY', None)
 
 
@@ -18,11 +21,17 @@ def get_temperature():
     if not city:
         return jsonify({'error': 'City parameter is required'}), 400
 
+    cache_key = f'{city}'
+    if cache_key in temperature_cache:
+        temperature = temperature_cache[cache_key]
+        return jsonify({'city': city, 'temperature': temperature, 'units': units})
+
     try:
         if OPENWEATHER_API_KEY is not None:
             temperature = fetch_temperature(city, units)
-        else: 
+        else:
             temperature = get_temperature_from_local(city, units)
+        temperature_cache[cache_key] = temperature
         return jsonify({'city': city, 'temperature': temperature, 'units': units})
     except Exception as e:
         return jsonify({'error': str(e)}), 500

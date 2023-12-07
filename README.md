@@ -108,4 +108,6 @@ an environment variable when running the application.
 docker run -p 5000:5000 -e FF_KEY=<your_ff_key> -e OPENWEATHER_API_KEY=<your_openweather_api_key> weather-api
 ```
 
-
+#### Test
+* Run `test.py` several times after startup and observe the behavior
+* Toggle the feature flag on, and repeat the previous step

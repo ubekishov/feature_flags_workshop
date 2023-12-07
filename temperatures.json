@@ -1,0 +1,165 @@
+{
+  "cities": [
+    {
+      "name": "New York",
+      "temperature": {
+        "imperial": 68.5,
+        "metric": 20.3
+      }
+    },
+    {
+      "name": "Los Angeles",
+      "temperature": {
+        "imperial": 75.2,
+        "metric": 24.0
+      }
+    },
+    {
+      "name": "Chicago",
+      "temperature": {
+        "imperial": 62.8,
+        "metric": 17.1
+      }
+    },
+    {
+      "name": "Houston",
+      "temperature": {
+        "imperial": 80.1,
+        "metric": 26.7
+      }
+    },
+    {
+      "name": "Phoenix",
+      "temperature": {
+        "imperial": 95.0,
+        "metric": 35.0
+      }
+    },
+    {
+      "name": "Philadelphia",
+      "temperature": {
+        "imperial": 72.3,
+        "metric": 22.4
+      }
+    },
+    {
+      "name": "San Antonio",
+      "temperature": {
+        "imperial": 85.6,
+        "metric": 29.8
+      }
+    },
+    {
+      "name": "San Diego",
+      "temperature": {
+        "imperial": 70.5,
+        "metric": 21.4
+      }
+    },
+    {
+      "name": "Dallas",
+      "temperature": {
+        "imperial": 76.2,
+        "metric": 24.6
+      }
+    },
+    {
+      "name": "San Jose",
+      "temperature": {
+        "imperial": 73.9,
+        "metric": 23.3
+      }
+    },
+    {
+      "name": "Austin",
+      "temperature": {
+        "imperial": 79.1,
+        "metric": 26.2
+      }
+    },
+    {
+      "name": "Jacksonville",
+      "temperature": {
+        "imperial": 77.8,
+        "metric": 25.4
+      }
+    },
+    {
+      "name": "San Francisco",
+      "temperature": {
+        "imperial": 63.4,
+        "metric": 17.4
+      }
+    },
+    {
+      "name": "Columbus",
+      "temperature": {
+        "imperial": 69.7,
+        "metric": 20.9
+      }
+    },
+    {
+      "name": "Indianapolis",
+      "temperature": {
+        "imperial": 66.0,
+        "metric": 18.9
+      }
+    },
+    {
+      "name": "Fort Worth",
+      "temperature": {
+        "imperial": 77.3,
+        "metric": 25.2
+      }
+    },
+    {
+      "name": "Charlotte",
+      "temperature": {
+        "imperial": 71.6,
+        "metric": 22.0
+      }
+    },
+    {
+      "name": "Seattle",
+      "temperature": {
+        "imperial": 59.8,
+        "metric": 15.4
+      }
+    },
+    {
+      "name": "Denver",
+      "temperature": {
+        "imperial": 64.2,
+        "metric": 17.9
+      }
+    },
+    {
+      "name": "London",
+      "temperature": {
+        "imperial": 58.9,
+        "metric": 14.9
+      }
+    },
+    {
+      "name": "Hong Kong",
+      "temperature": {
+        "imperial": 78.1,
+        "metric": 25.6
+      }
+    },
+    {
+      "name": "Bangalore",
+      "temperature": {
+        "imperial": 75.4,
+        "metric": 24.1
+      }
+    },
+    {
+      "name": "Paris",
+      "temperature": {
+        "imperial": 63.7,
+        "metric": 17.6
+      }
+    }
+  ]
+}

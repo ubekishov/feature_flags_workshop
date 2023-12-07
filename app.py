@@ -4,10 +4,8 @@ import os
 
 app = Flask(__name__)
 
-OPENWEATHER_API_KEY = os.environ.get('OPENWEATHER_API_KEY')
+OPENWEATHER_API_KEY = os.environ.get('OPENWEATHER_API_KEY', None)
 
-if not OPENWEATHER_API_KEY:
-    raise ValueError("OpenWeatherMap API key is not set. Please set the OPENWEATHER_API_KEY environment variable.")
 
 @app.route('/temperature', methods=['GET'])
 def get_temperature():
@@ -18,7 +16,10 @@ def get_temperature():
         return jsonify({'error': 'City parameter is required'}), 400
 
     try:
-        temperature = fetch_temperature(city, units)
+        if OPENWEATHER_API_KEY is not None:
+            temperature = fetch_temperature(city, units)
+        else: 
+            temperature = get_temperature_from_local(city, units)
         return jsonify({'city': city, 'temperature': temperature, 'units': units})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -37,7 +38,7 @@ def fetch_temperature(city_name, units="imperial"):
         error_message = data.get('message', 'Unknown error')
         raise Exception(f'Failed to fetch temperature: {error_message}')
 
-def get_temperature(city_name, units="imperial"):
+def get_temperature_from_local(city_name, units="imperial"):
     # Load city data from the JSON file
     with open("cities_data.json", "r") as file:
         cities_data = json.load(file)

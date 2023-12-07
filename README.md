@@ -13,11 +13,9 @@ This is a simple Flask application that provides an API endpoint to fetch the te
 
 ```bash
 git clone https://github.com/yourusername/weather-api.git
-cd weather-api
-pip install -r requirements.txt
 ```
 
-### OpenWeatherMap API Key
+#### OpenWeatherMap API Key
 1. Visit OpenWeatherMap and sign up for an account.
 2. Obtain your API key from the dashboard.
 
@@ -28,3 +26,24 @@ docker run -p 5000:5000 -e OPENWEATHER_API_KEY=<your_openweather_api_key> weathe
 ```
 Replace <your_openweather_api_key> with your actual OpenWeatherMap API key.
 
+
+### Usage
+Access the API endpoint at http://localhost:5000/temperature.
+
+#### API Endpoint
+* Endpoint: /temperature
+* Method: GET
+* Parameters:
+** city (required): Name of the city.
+** units (optional): Temperature units (imperial or metric). Defaults to metric.
+##### Example Request:
+```bash
+curl http://localhost:5000/temperature?city=London&units=metric
+```
+##### Example Response:
+```json
+{
+  "city": "London",
+  "temperature": 20.5,
+  "units": "metric"
+}```

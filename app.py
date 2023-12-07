@@ -4,8 +4,16 @@ import os
 import json
 import time
 import random
+from featureflags.client import CfClient
+from featureflags.evaluations.auth_target import Target
+
+ff_api_key = os.environ.get('FF_KEY')
 
 app = Flask(__name__)
+cf = CfClient(ff_api_key)
+
+# Cache to store temperature values
+temperature_cache = {}
 
 OPENWEATHER_API_KEY = os.environ.get('OPENWEATHER_API_KEY', None)
 
@@ -17,12 +25,24 @@ def get_temperature():
 
     if not city:
         return jsonify({'error': 'City parameter is required'}), 400
+    if request.headers.get('persona') == "tester":
+        target = Target(identifier="tester", name="tester")
+    else:
+        target = Target(identifier="user1", name="user1")
+
+    if cf.bool_variation("cache_result", target, False):
+        cache_key = f'{city}_{units}'  # The fix!
+        if cache_key in temperature_cache:
+            temperature = temperature_cache[cache_key]
+            return jsonify({'city': city, 'temperature': temperature, 'units': units})
 
     try:
         if OPENWEATHER_API_KEY is not None:
             temperature = fetch_temperature(city, units)
-        else: 
+        else:
             temperature = get_temperature_from_local(city, units)
+        if cf.bool_variation("cache_result", target, False):
+            temperature_cache[cache_key] = temperature
         return jsonify({'city': city, 'temperature': temperature, 'units': units})
     except Exception as e:
         return jsonify({'error': str(e)}), 500

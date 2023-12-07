@@ -34,8 +34,8 @@ Access the API endpoint at http://localhost:5000/temperature.
 * Endpoint: /temperature
 * Method: GET
 * Parameters:
- * city (required): Name of the city.
- * units (optional): Temperature units (imperial or metric). Defaults to metric.
+  * city (required): Name of the city.
+  * units (optional): Temperature units (imperial or metric). Defaults to metric.
 ##### Example Request:
 ```bash
 curl http://localhost:5000/temperature?city=London&units=metric

@@ -111,3 +111,13 @@ docker run -p 5000:5000 -e FF_KEY=<your_ff_key> -e OPENWEATHER_API_KEY=<your_ope
 #### Test
 * Run `test.py` several times after startup and observe the behavior
 * Toggle the feature flag on, and repeat the previous step
+* Change the feature default rule for `When the Flag is Enabled` to `False`
+* Run `test.py` several times and observe the behavior
+* Run `test.py` with the flag `--tester` several times and observe the behavior
+* Update the flag to serve true `To Targets` with the name `tester` 
+  * You main have to wait 1-2 minutes for the target to show up, you can verify in the `Targets` page
+* Save the rule with the update and rerun `test.py` with the `--tester` flag and without
+* Observe the caching behavior change
+* Change the feature default rule for `When the Flag is Enabled` to `True`
+* Save the rule with the update and rerun `test.py` with the `--tester` flag and without
+* Observe the caching behavior change

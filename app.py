@@ -26,7 +26,12 @@ def get_temperature():
     if not city:
         return jsonify({'error': 'City parameter is required'}), 400
     if request.headers.get('persona') == "tester":
-        target = Target(identifier="tester", name="tester")
+        attributes = {
+            "usertype": "internal",
+            "company": "acme inc",
+            "opted-into-beta": True
+        }
+        target = Target(identifier="tester", name="tester", attributes=attributes)
     else:
         target = Target(identifier="user1", name="user1")
 

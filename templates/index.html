@@ -1,0 +1,41 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60">
+    <title>API Data Display</title>
+    <!-- Include the JavaScript file -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table id="appTable">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Temperature</th>
+                <th>Response Time</th>
+            </tr>
+        </thead>
+        <tbody id="appBody"></tbody>
+    </table>
+</body>
+</html>

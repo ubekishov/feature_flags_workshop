@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import requests
 import os
 import json
@@ -8,6 +8,11 @@ import random
 app = Flask(__name__)
 
 OPENWEATHER_API_KEY = os.environ.get('OPENWEATHER_API_KEY', None)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/temperature', methods=['GET'])

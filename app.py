@@ -18,6 +18,11 @@ temperature_cache = {}
 OPENWEATHER_API_KEY = os.environ.get('OPENWEATHER_API_KEY', None)
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/temperature', methods=['GET'])
 def get_temperature():
     city = request.args.get('city')

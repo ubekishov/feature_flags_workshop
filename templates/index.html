@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="refresh" content="15">
     <title>API Data Display</title>
     <!-- Include the JavaScript file -->
+    <script type="text/javascript">
+        let key;
+    </script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <style>
         table {
@@ -27,6 +30,11 @@
     </style>
 </head>
 <body>
+    <div class="button-container">
+        <!-- Button to trigger dialog -->
+        <button onclick="showInputDialog('login')">Login</button>
+        <button onclick="showInputDialog('key')">Key</button>
+    </div>
     <table id="appTable">
         <thead>
             <tr>
@@ -38,4 +46,27 @@
         <tbody id="appBody"></tbody>
     </table>
 </body>
+<script type="text/javascript">
+    // Function to show input dialog with context
+    function showInputDialog(context) {
+        const userInput = prompt(`Enter your ${context}:`);
+        if (userInput !== null) {
+            alert(`You entered ${context}: ${userInput}`);
+
+            // Set global variables based on context
+            if (context === 'login') {
+                user = userInput;
+
+                // Update localStorage only for "login" context
+                localStorage.setItem('user', user);
+            } else if (context === 'key') {
+                key = userInput;
+
+                // Update localStorage only for "key" context
+                localStorage.setItem('key', key);
+            }
+        }
+    }
+
+</script>
 </html>

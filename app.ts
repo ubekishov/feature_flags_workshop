@@ -9,10 +9,21 @@ interface ApiResponse {
     units: string;
 }
 
+// Global variable
+let user: string | null = localStorage.getItem('user');
+
 // Function to fetch data from the API
 async function fetchData(endpoint: string): Promise<{ data: ApiResponse, time: number }> {
     const startTime = new Date().getTime();
-    const response = await fetch(endpoint);
+
+    const headers: Record<string, string> = {};
+
+    // Add "persona" header if user is not null
+    if (user !== null) {
+        headers['persona'] = user;
+    }
+
+    const response = await fetch(endpoint, { headers });
     const data: ApiResponse = await response.json();
     const endTime = new Date().getTime();
     const timeTaken = endTime - startTime;

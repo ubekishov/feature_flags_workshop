@@ -36,6 +36,7 @@ def get_temperature():
             "company": "acme inc",
             "opted-into-beta": True
         }
+        print("Tester!")
         target = Target(identifier="tester", name="tester", attributes=attributes)
     else:
         target = Target(identifier="user1", name="user1")

@@ -7,7 +7,7 @@ COPY package*.json ./
 
 RUN npm install -g typescript
 RUN npm install -D esbuild
-
+RUN npm install
 COPY . .
 
 RUN tsc

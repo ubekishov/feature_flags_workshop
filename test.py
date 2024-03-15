@@ -16,7 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description="Query temperature endpoint for cities in metric and imperial units.")
     parser.add_argument(
         '--endpoint',
-        default='http://localhost:5000/temperature',
+        default='http://localhost:5001/temperature',
         help='Endpoint URL for temperature query'
     )
     args = parser.parse_args()
